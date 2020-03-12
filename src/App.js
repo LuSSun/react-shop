@@ -1,26 +1,94 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Layouts from './components/Layouts'
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect
+} from 'react-router-dom'
+import { connect } from 'react-redux'
+import routers from './router/index'
+import Tab from './components/Tab/index'
+// 页面的标题
+import DocumentTitle from 'react-document-title'
+import NotDefined from './pages/NotDefined/index'
+import { ActivityIndicator } from 'antd-mobile';
+import history from '@/config/history'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLoading: true
+		}
+	}
+	componentDidMount() {
+
+	}
+	render() {
+		const token = this.props.token
+		return (
+			<Layouts>
+				<ActivityIndicator
+					toast
+					text=""
+					animating={this.props.isLoading}
+				/>
+				<Router history={history}>
+					<Switch>
+						{
+							routers.map((route, key) => {
+								return (
+									<Route
+										exact={!!route.exact}
+										key={key}
+										path={route.path}
+										render={(renderHistory) => {
+											if (route.meta.backgroundColor) {
+												document.body.style.backgroundColor = route.meta.backgroundColor
+											} else {
+												document.body.style.backgroundColor = '#f5f5f5'
+											}
+
+											return (
+												<DocumentTitle title={route.meta.title}>
+													<div className={route.isTab ? 'tabPageContent' : 'noTabPageContent'}>
+														{
+															!route.meta.auth ? <route.component {...renderHistory} routeMeta={route.meta} />
+																: (token ? <route.component {...renderHistory} routeMeta={route.meta} />
+																	: <Redirect to={{
+																		pathname: '/login',
+																		state: { from: renderHistory.location }
+																	}}></Redirect>
+																)
+														}
+													</div>
+												</DocumentTitle>
+											)
+										}}
+									>
+									</Route>
+								)
+							})
+						}
+						{/* 匹配404页面 */}
+						<Route path="*" component={NotDefined}>
+						</Route>
+					</Switch>
+					<Tab></Tab>
+				</Router>
+			</Layouts >
+
+		);
+	}
+
 }
-
-export default App;
+const mapStateToProps = (state, ownProps) => {
+	return {
+		token: state.app.token,
+		isLoading: state.app.isLoading,
+		data: state.app
+	}
+}
+export default connect(mapStateToProps)(App)
