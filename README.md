@@ -153,7 +153,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 export default connect(mapStateToProps)(App)
 ```
-其中 DocumentTitle第三方组件 设置document.title,
+其中 DocumentTitle第三方组件 设置document.title。
 
 
 ## 安装
