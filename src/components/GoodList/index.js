@@ -8,7 +8,7 @@ const GoodList = ({ goodList, isSort }) => {
 	return (
 		<div className="goodList">
 			{
-				goodList.map((item, index) => (
+			  goodList.length>0 &&	goodList.map((item, index) => (
 					<Link className="item acea-row row-between-wrapper" key={index} to={`/detail/${item.id}`}>
 						<div className="pictrue">
 							<img src={item.image} className="image" alt="" />

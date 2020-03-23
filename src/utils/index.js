@@ -43,6 +43,31 @@ export function checkPhone(phone){
         return true;
     }
 }
+//获取QueryString的数组
+export function getQueryString() {
+  let result = window.location.search.match(
+    new RegExp('[?&][^?&]+=[^?&]+', 'g'),
+  );
+  if (result == null) {
+    return '';
+  }
+  for (let i = 0; i < result.length; i++) {
+    result[i] = result[i].substring(1);
+  }
+  return result;
+}
+//根据 QueryString 参数名称获取值
+export function getQueryStringByName(name) {
+
+  let result = window.location.search.match(
+    new RegExp('[?&]' + name + '=([^&]+)', 'i'),
+  );
+  if (result == null || result.length < 1) {
+    return '';
+  }
+  // 解码
+  return decodeURI(result[1]);
+}
 
 const VUE_APP_API_URL = process.env.VUE_APP_API_URL || `${location.origin}/api`;
 const VUE_APP_WS_URL =

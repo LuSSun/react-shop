@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import './utils/rem'
 import App from './App';
 import { Provider } from 'react-redux'
+import 'animate.css'
 // 后来加上会影响页面的某些布局  所以默认加上
 import 'antd-mobile/dist/antd-mobile.css'
 import './assets/iconfont/iconfont.css'

@@ -19,7 +19,6 @@ function baseRequest(options) {
 
     headers['Authori-zation'] = "Bearer " + token
     options.headers = headers
-	console.log(options)
 
     if (options.login && !token) {
         toLogin()

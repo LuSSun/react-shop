@@ -136,6 +136,7 @@
   justify-content: space-between;
 }
 /* 上下左右垂直居中 */
+
 .acea-row.row-center-wrapper {
   -webkit-box-align: center;
   -moz-box-align: center;
@@ -147,7 +148,6 @@
   -moz-box-pack: center;
   -o-box-pack: center;
   -ms-flex-pack: center;
-  -webkit-justify-content: center;
   justify-content: center;
 }
 /* 上下两边居中对齐 */
@@ -164,6 +164,9 @@
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
   justify-content: space-between;
+}
+.index .acea-row.row-center-wrapper {
+  justify-content: center;
 }
 /* 轮播图 */
 .slider-banner {

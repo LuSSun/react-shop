@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Layouts from './components/Layouts'
 import {
-	BrowserRouter as Router,
+  BrowserRouter as Router,
+  // Router,
 	Switch,
 	Route,
 	Redirect

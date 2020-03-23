@@ -60,7 +60,7 @@ const routers = [
 			footer: true,
 			auth: true
 		},
-		component: AsyncComponent(() => import('@/pages/shop/ShoppingCart.js'))
+		component: AsyncComponent(() => import('@/pages/shop/shoppingCart.js'))
 	},
 	{
 		name: 'User',
@@ -176,7 +176,17 @@ const routers = [
       auth: true
     },
     component: AsyncComponent(() => import("@/pages/order/myOrder.js"))
-	},
+  },
+  {
+    path: "/order/detail/:id",
+    name: "OrderDetails",
+    meta: {
+      title: "订单详情",
+      keepAlive: false,
+      auth: true
+    },
+    component: AsyncComponent(() => import("@/pages/order/orderDetails.js"))
+  },
 	{
     path: "/order/refund_list",
     name: "ReturnList",
@@ -186,18 +196,6 @@ const routers = [
       auth: true
     },
     component: AsyncComponent(() => import("@/pages/order/returnList.js"))
-	},
-
-	{
-		name: 'bar',
-		path: '/bar',
-		exact: true,
-		meta: {
-			title: "bar页面",
-			keepAlive: true,
-			backgroundColor: "#fff"
-		},
-		component: AsyncComponent(() => import('@/pages/bar/index.js'))
 	},
 	{
 		name: 'Login',
@@ -216,7 +214,123 @@ const routers = [
 			title: "登录",
 		},
 		component: AsyncComponent(() => import('@/pages/login/retrievePassword.js'))
-	},
+  },
+  {
+    path: "/search",
+    name: "GoodSearch",
+    meta: {
+      title: "搜索商品",
+      keepAlive: true,
+      backgroundColor: "#fff"
+    },
+		component: AsyncComponent(() => import('@/pages/shop/search.js'))
+  },
+  {
+    path: "/goods_list",
+    name: "GoodsList",
+    meta: {
+      title: "商品列表",
+      keepAlive: true,
+
+    },
+		component: AsyncComponent(() => import('@/pages/shop/goodsList.js'))
+  },
+  {
+    path: "/collection",
+    name: "GoodsCollection",
+    meta: {
+      title: "收藏商品",
+      keepAlive: false,
+      auth: true
+    },
+    component: AsyncComponent(() => import("@/pages/shop/goodsCollection.js"))
+  },
+  {
+    path: "/user/get_coupon",
+    name: "GetCoupon",
+    meta: {
+      title: "领取优惠券",
+      keepAlive: true
+    },
+    component: AsyncComponent(() => import("@/pages/user/getCoupon.js"))
+  },
+  {
+    path: "/news_list",
+    name: "NewsList",
+    meta: {
+      title: "新闻",
+      keepAlive: true,
+      backgroundColor: "#fff"
+    },
+    component: AsyncComponent(() => import("@/pages/shop/news/newsList.js"))
+  },
+  {
+    path: "/news_detail/:id",
+    name: "NewsDetail",
+    meta: {
+      title: "新闻详情",
+      keepAlive: true,
+      backgroundColor: "#fff"
+    },
+    component: AsyncComponent(() => import("@/pages/shop/news/newsDetail.js"))
+
+  },
+  {
+    path: "/user/sign",
+    name: "Sign",
+    meta: {
+      title: "签到",
+      keepAlive: true,
+      auth: true
+    },
+    component: AsyncComponent(() => import("@/pages/user/signIn/sign.js"))
+  },
+  {
+    path: "/user/sign_record",
+    name: "SignRecord",
+    meta: {
+      title: "签到记录",
+      keepAlive: true
+    },
+    component: AsyncComponent(() => import("@/pages/user/signIn/signRecord.js"))
+  },
+  {
+    path: "/hot_new_goods/:type",
+    name: "HotNewGoods",
+    meta: {
+      title: "热门榜单",
+      keepAlive: false
+    },
+    component: AsyncComponent(() => import("@/pages/shop/hotNewGoods.js"))
+  },
+  {
+    path: "/promotion",
+    name: "GoodsPromotion",
+    meta: {
+      title: "促销单品",
+      keepAlive: false
+    },
+    component: AsyncComponent(() => import("@/pages/shop/goodsPromotion.js"))
+  },
+  {
+    path:'/detail/:id',
+    name:'GoodDetail',
+    meta:{
+      title:'商品详情',
+      keepAlive:false
+    },
+    component: AsyncComponent(() => import("@/pages/shop/goodsDetail.js"))
+  },
+  {
+    path:'/location',
+    name:'GoodLocation',
+    meta:{
+      title:'地图',
+      keepAlive:false
+    },
+    component: AsyncComponent(() => import("@/pages/shop/location.js"))
+  },
+
 	{
 		name: 'NotDefined',
 		path: '*',

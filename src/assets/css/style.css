@@ -54,7 +54,7 @@ body{font-size:0.28rem;background-color:#f5f5f5;transition: background-color .3s
 .recommend .recommendList .item .name{font-size:0.28rem;color:#282828;margin-top:0.2rem;}
 .recommend .recommendList .item .money{font-size:0.2rem;margin-top:0.03rem;}
 .recommend .recommendList .item .money .num{font-size:0.28rem;}
-.noCommodity{padding-top: 0.75rem;}
+.noCommodity{padding-top: 0.75rem;padding-bottom: 0.2rem;}
 .noCommodity .noPictrue{width:4.14rem;height:3.36rem;margin:0 auto 0.3rem auto;}
 .noCommodity .noPictrue .image{width:100%;height:100%;}
 /*产品详情轮播*/
@@ -82,19 +82,17 @@ body{font-size:0.28rem;background-color:#f5f5f5;transition: background-color .3s
 .coupon-list{padding:0 0.3rem;margin-top:0.25rem;}
 .coupon-list .item{width:100%;height:1.7rem;margin-bottom:0.16rem;}
 .coupon-list .item .money{background-image:url('../images/coupon1.png');background-repeat:no-repeat;background-size:100% 100%;
-    width:2.4rem;height:100%;color:#fff;font-size:0.36rem;font-weight:bold;text-align:center;line-height:1.7rem;}
+    width:2rem;height:100%;color:#fff;font-size:0.36rem;font-weight:bold;text-align:center;line-height:1.7rem;}
 .coupon-list .item .money.moneyGray{background-image:url('../images/coupon2.png');}
 .coupon-list .item .money .num{font-size:0.6rem;}
-.coupon-list .item .text{width:4.5rem;padding:0 0.17rem 0 0.24rem;background-color:#fff;}
+.coupon-list .item .text{width:4.8rem;padding:0 0.17rem 0 0.24rem;background-color:#fff;}
 .coupon-list .item .text .condition{font-size:0.3rem;color:#282828;height:0.93rem;line-height:0.93rem;
-    border-bottom:1px solid #f0f0f0;}
+    border-bottom:1px solid #f0f0f0;text-align: left;}
 .coupon-list .item .text .data{font-size:0.2rem;color:#999;height:0.76rem;}
 .coupon-list .item .text .data .bnt{width:1.36rem;height:0.44rem;border-radius:0.22rem;font-size:0.22rem;color:#fff;text-align:center;line-height:0.44rem;}
 .coupon-list .item .text .data .bnt.gray{background-color:#ccc;}
 /*优惠券列表弹窗*/
-.coupon-list-window{position:fixed;bottom:0;left:0;width:100%;background-color:#f5f5f5;border-radius:0.16rem 0.16rem 0 0;z-index:111;transition:all .3s cubic-bezier(.25,.5,.5,.9);-webkit-transition:all .3s cubic-bezier(.25,.5,.5,.9);-moz-transition:all .3s cubic-bezier(.25,.5,.5,.9);-o-transition:all .3s cubic-bezier(.25,.5,.5,.9);transform:translate3d(0,100%,0);
--webkit-transform:translate3d(0,100%,0);-ms-transform:translate3d(0,100%,0);-moz-transform:translate3d(0,100%,0);
--o-transform:translate3d(0,100%,0);}
+.coupon-list-window{border-radius: 0.16rem 0.16rem 0 0;}
 .coupon-list-window.on{transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);}
 .coupon-list-window .title{height:1.24rem;width:100%;text-align:center;line-height:1.24rem;font-size:0.32rem;
     font-weight:bold;position:relative;color: #333;}
@@ -142,9 +140,9 @@ body{font-size:0.28rem;background-color:#f5f5f5;transition: background-color .3s
 .sharing-packets .sharing-con{width:1.87rem;height:2.1rem;position:relative;}
 .sharing-packets .sharing-con .image{width:100%;height:100%;}
 .sharing-packets .sharing-con .text{position:absolute;top:0.2rem;font-size:0.2rem;width:100%;text-align:center;}
-.sharing-packets .sharing-con .text .money{font-size:0.32rem;font-weight:bold;}
+.sharing-packets .sharing-con .text .money{font-size:0.32rem;font-weight:bold;line-height: 0.4rem;}
 .sharing-packets .sharing-con .text .money .label{font-size:0.2rem;}
-.sharing-packets .sharing-con .text .tip{font-size:0.18rem;color:#999;}
+.sharing-packets .sharing-con .text .tip{font-size:0.18rem;color:#999;line-height: 0.45rem;}
 .sharing-packets .sharing-con .text .shareBut{font-size:0.22rem;color:#fff;margin-top:0.27rem;height:0.5rem;
     line-height:0.5rem;}
 /*订单产品*/
@@ -275,7 +273,7 @@ body{font-size:0.28rem;background-color:#f5f5f5;transition: background-color .3s
     line-height:0.6rem;border:1px solid #f5f5f5;border-bottom:0;border-top:0;padding:0 0.1rem;}.index .wrapper .boutique{width:6.9rem;height:2.9rem;margin:0.28rem auto 0 auto;}
 .index .wrapper .boutique{width:6.9rem;height:2.9rem;margin:0.28rem auto 0 auto;}
 .index .wrapper .boutique img{width:100%;height:2.6rem;}
-.index .wrapper .boutique .swiper-pagination{bottom:-0.08rem;width:100%;}
+.index .wrapper .boutique .swiper-pagination{bottom:0;width:100%;}
 .index .wrapper .boutique .swiper-pagination-bullet{width:0.07rem;height:0.07rem;border-radius:50%;
     background-color:#fc4141;opacity:0.3;}
 .index .wrapper .boutique .swiper-pagination-bullet~ .swiper-pagination-bullet{margin-left:0.1rem;}
@@ -458,8 +456,11 @@ top:50%;margin-top:-0.35rem;}
 .product-con .product-intro{margin-top:0.2rem;}
 .product-con .product-intro .title{font-size:0.3rem;color:#282828;height:0.86rem;width:100%;background-color:#fff;
     text-align:center;line-height:0.86rem;}
-.product-con .product-intro .conter{width:100%;}
-.product-con .product-intro .conter img{width:100%!important;display:block!important;}
+.product-con .product-intro .conter{width:100%;font-size: 0px;}
+.product-con .product-intro .conter img{
+  display:block;
+  width:100%!important;
+}
 /*产品详情*/
 .product-con .footer{padding:0 0.2rem 0 0.3rem;position:fixed;bottom:0;width:100%;height:1rem;background-color:#fff;
     z-index:99;border-top:1px solid #f0f0f0;}
@@ -693,7 +694,7 @@ border-radius:2rem;top:-0.1rem;right:0;height:0.3rem;line-height:0.3rem;padding:
 /*会员中心*/
 .member-center .header{background-color:#232323;width:100%;padding:0.5rem 0;}
 .member-center .header .slider-banner{height:3.28rem;}
-.member-center .header .slider-banner .swiper-slide{width:6.36rem!important;height:3.28rem;border-radius:0.16rem;
+.member-center .header .slider-banner .swiper-slide{width:6.36rem!important;height:3.28rem;border-radius:0.16rem;overflow: hidden;
     color:#fff;position:relative;background-repeat:no-repeat;background-size:100% 100%;}
 .member-center .header .slider-banner .swiper-slide.diamonds{background-image:url("../images/diamonds.jpg");}
 .member-center .header .slider-banner .swiper-slide.gold{background-image:url("../images/gold.jpg");}
@@ -1384,7 +1385,7 @@ border-radius:0.3rem;color:#fff;line-height:0.5rem;text-align:center;bottom:0.17
 .productSort .header .input input{font-size:0.26rem;height:100%;width:5.97rem;}
 .productSort .header .input input::placeholder{color:#999;}
 .productSort .aside{position:fixed;width:1.8rem;left:0;top:0.96rem;bottom:1rem;background-color:#f7f7f7;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
-.productSort .aside .item{height:0.8rem;width:100%;font-size:0.26rem;color:#424242;}
+.productSort .aside .item{height:0.8rem;width:100%;font-size:0.26rem;color:#424242;border-left: 0.04rem solid transparent;justify-content: center;}
 .productSort .aside .item.on{background-color:#fff;border-left:0.04rem solid #fc4141;width:100%;text-align:center;color:#fc4141;font-weight:bold;}
 .productSort .conter{margin-left:1.8rem;padding: 0 0.14rem;margin-top:0.96rem;}
 .productSort .conter .listw{padding-top:0.2rem;}

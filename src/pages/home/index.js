@@ -97,7 +97,7 @@ const SwiperBoutique = ({ info }) => {
 		},
 		autoplay: {
 			disableOnInteraction: false,
-			delay: 600000
+			delay: 2000
 		},
 		loop: true,
 		speed: 1000,
@@ -326,7 +326,7 @@ class Home extends Component {
 								<div className="name line1">促销单品</div>
 								<div className="line1">{this.state.info.salesInfo}</div>
 							</div>
-							<Link to="'/promotion'" className="more">更多<span className="iconfont icon-jiantou"></span></Link>
+							<Link to="/promotion" className="more">更多<span className="iconfont icon-jiantou"></span></Link>
 						</div>
 					</section>
 				}
