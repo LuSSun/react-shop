@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 
-export default class personalData extends Component {
-    render() {
-        console.log('history', this.props)
-        return (
-            <div>
-                个人资料
-            </div>
-        )
-    }
+export default class PersonalData extends Component {
+  render() {
+    return (
+      <div className="personal-data">
+        <div className="wrapper">
+          <div className="title">管理我的账号</div>
+          {/* <div className="wrapList">
+
+          </div> */}
+        </div>
+      </div>
+    )
+  }
 }

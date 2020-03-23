@@ -3,7 +3,6 @@ import img404 from '../../assets/images/404.png'
 import CurrentPage from './css.js'
 export default class NotDefined extends Component {
 	render() {
-		console.log('history', this.props)
 		return (
 			<CurrentPage className="not-defined">
 				{/* <div className="not-defined"> */}

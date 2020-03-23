@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import toLogin from "@/libs/login";
+import {toLogin} from "@/libs/login";
 import { couponReceiveBatch } from "@/api/user";
 import {Toast} from 'antd-mobile'
+import { withRouter } from 'react-router-dom'
 class CouponWindow extends React.Component {
 	constructor(props) {
 		super(props)
@@ -53,7 +54,9 @@ class CouponWindow extends React.Component {
 
 	checked=()=>{
 		if(!this.props.token){
-			toLogin()
+      toLogin({
+        history:this.props.history,
+        location:this.props.location})
 			return
 		}
 		const ids = this.props.couponList.reduce((initial, coupon) => {
@@ -82,4 +85,4 @@ const mapStateToProps = (state, ownProps) => {
     token: state.app.token
   }
 }
-export default connect(mapStateToProps)(CouponWindow)
+export default connect(mapStateToProps)(withRouter(CouponWindow))

@@ -83,7 +83,7 @@ export default class User extends Component {
 							}
 						</div>
 					</div>
-					<span className="iconfont icon-shezhi" onClick={() => { this.props.history.push('/user/data') }}></span>
+					<span className="iconfont icon-shezhi"></span>
 				</div>
 				<div className="wrapper">
 					<div className="nav acea-row row-middle">
@@ -192,7 +192,19 @@ export default class User extends Component {
 	}
 
 	goPages(index) {
-		let url = this.state.MyMenus[index].wap_url
+    let url = this.state.MyMenus[index].wap_url
+    if(url ==='/user/user_promotion'){
+      return Toast.offline('我的推广功能还没开发，请耐心等候', 1.5)
+    }else if(url === '/user/account'){
+      return Toast.offline('我的余额功能还没开发，请耐心等候', 1.5)
+    }else if(url === '/user/add_manage'){
+      return Toast.offline('地址信息功能还没开发，请耐心等候', 1.5)
+    }else if(url === '/activity/bargain/record'){
+      return Toast.offline('砍价记录功能还没开发，请耐心等候', 1.5)
+    }else if(url === '/customer/list'){
+      return Toast.offline('联系客服功能还没开发，请耐心等候', 1.5)
+    }
+
 		if (url === "/user/user_promotion" && this.state.userInfo.statu === 1) {
 			if (!this.state.userInfo.is_promoter){
 				return Toast.info('您还没有推广权限！！', 1.5)

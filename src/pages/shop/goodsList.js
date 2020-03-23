@@ -74,7 +74,6 @@ class goodsList extends Component {
   }
 
   render() {
-    console.log('this.state',this.state)
     return (
       <div>
         <section className="productList">
@@ -266,8 +265,6 @@ class goodsList extends Component {
     this.setState({
       productList: [],
     }, () => {
-
-      console.log('h6666', this.state)
       this.get_product_list()
     })
 
@@ -275,7 +272,6 @@ class goodsList extends Component {
   }
 
   setWhere() {
-    console.log('set', this.state)
     if (this.state.price === 0) {
       this.setState({
         where: {
@@ -327,9 +323,7 @@ class goodsList extends Component {
           news: state.nows ? 1 : 0
         }
       }
-    ), () => {
-      console.log('new', this.state)
-    })
+    ))
 
   }
 }

@@ -95,7 +95,6 @@ class RetrievePassword extends Component {
 				})
 				countDown--
 			}
-			console.log(countDown)
 			cookie.set('secondsremained', countDown, 1)
 		}, 1000)
 	}
@@ -144,7 +143,6 @@ class RetrievePassword extends Component {
 	}
 
 	loginMobile = () => {
-		console.log(this.state)
 	}
 
 	registerReset = () => {

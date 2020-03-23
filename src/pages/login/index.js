@@ -21,7 +21,7 @@ class Login extends Component {
 			disabled: false,
 			text: '获取验证码',
 		}
-	}
+  }
 
 	componentDidMount() {
 		const countDown = cookie.get('secondsremained') ? cookie.get('secondsremained') : 0
@@ -38,7 +38,6 @@ class Login extends Component {
 	}
 
 	render() {
-		console.log('login',this.props)
 		return (
 			<div className="register absolute">
 				<div className="shading">
@@ -199,7 +198,6 @@ class Login extends Component {
 				})
 				countDown--
 			}
-			console.log(countDown)
 			cookie.set('secondsremained', countDown, 1)
 		}, 1000)
 	}
@@ -256,7 +254,6 @@ class Login extends Component {
 	loginMobile = () => {
 		const { account, password } = this.state
 		if (this.state.current === 0) {
-			console.log(this.state)
 			if (!this.state.account) {
 				Toast.info('请输入账号', 1.5)
 				return
@@ -320,7 +317,6 @@ class Login extends Component {
 		}).catch(err => {
 			Toast.info(err.msg, 1.5)
 		})
-		console.log('quick', this.state)
 	}
 
 	// 注册

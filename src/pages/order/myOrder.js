@@ -83,7 +83,6 @@ export default class myOrder extends Component {
     }
   }
   render() {
-    console.log('history', this.props)
     const rowList = (order) => {
       return (
         <div className="item" key={order.id}>
@@ -230,8 +229,6 @@ export default class myOrder extends Component {
       page: this.state.page + 1,
       loading: false,
       loadend: res.data.length < this.state.limit
-    }, () => {
-      console.log('aaa', this.state)
     })
   }
   getStatus(order) {

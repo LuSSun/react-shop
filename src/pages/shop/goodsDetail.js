@@ -206,8 +206,6 @@ class GoodsDetail extends Component {
         ...this.state.coupon,
         list: res.data || []
       }
-    }, () => {
-      console.log('coupons', this.state)
     })
   }
   getImageBase64(){
@@ -227,7 +225,6 @@ class GoodsDetail extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <PageStyle>
         <div className={this.state.posterImageStatus ? 'noscroll product-con' : 'product-con'}>
@@ -630,7 +627,6 @@ class GoodsDetail extends Component {
     this.goCat(1)
   }
   changeFun = (data) => {
-    console.log(data)
     this.setState({
       coupon: {
         ...this.state.coupon,
@@ -656,7 +652,6 @@ class GoodsDetail extends Component {
     })
   }
   changeAttr(res) {
-    console.log(res)
     let productSelect = this.state.productValue[res];
     if (productSelect) {
       this.setState({
@@ -693,7 +688,6 @@ class GoodsDetail extends Component {
     }
   }
   changeCartNum(changeValue) {
-    console.log(changeValue)
     //获取当前变动属性
     let productSelect = this.state.productValue[this.state.attrValue];
     if (productSelect === undefined && !this.state.attr.productAttr.length) {

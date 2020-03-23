@@ -43,9 +43,6 @@ class GoodsCollection extends Component {
     if (!this.state.loadend) {
       this.setState({ loading: true })
       this.getData()
-      setTimeout(() => {
-        console.log(this.state)
-      }, 50);
     }
   }
 
@@ -110,7 +107,6 @@ class GoodsCollection extends Component {
         text: '确定', onPress: () => {
           const id = this.state.collectProductList[index].pid,
             category = this.state.collectProductList[index].category;
-          console.log(id, category)
           getCollectDel(id, category).then(res => {
             Toast.info('删除成功', 1, () => {
               this.state.collectProductList.splice(index, 1)

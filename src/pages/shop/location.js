@@ -18,7 +18,6 @@ class Location extends Component {
     })
   }
   render() {
-    console.log(this.state)
     return (
       <div className="geoPage" style={{height:'100vh',width:'100%'}}>
         <iframe

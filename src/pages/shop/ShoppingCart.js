@@ -15,7 +15,7 @@ import { postCollectAll } from "@/api/user";
 import cookie from '../../utils/store/cookie'
 import { mul, add } from "@/utils/bc";
 import debounce from "lodash.debounce";
-import { Toast, Model } from 'antd-mobile'
+import { Toast } from 'antd-mobile'
 const CHECKED_IDS = "cart_checked";
 
 class GoodValid extends React.Component {
@@ -251,40 +251,44 @@ class ShoppingCart extends React.Component {
   }
 
   async getCartList() {
-    const res = await getCartList()
-    let cartList = res.data
-    // debugger
-    let checkedIds = cookie.get(CHECKED_IDS) || [];
-    if (!Array.isArray(checkedIds)) checkedIds = [];
-    cartList.valid.forEach(cart => {
+    try {
+      const res = await getCartList()
+      let cartList = res.data
+      let checkedIds = cookie.get(CHECKED_IDS) || [];
+      if (!Array.isArray(checkedIds)) checkedIds = [];
+      cartList.valid.forEach(cart => {
+        if (checkedIds.length) {
+          if (checkedIds.indexOf(cart.id) !== -1) cart.checked = true;
+          else cart.checked = false;
+        } else {
+          cart.checked = true;
+          this.setState({
+            checkedIds: [
+              ...this.state.checkedIds,
+              cart.id
+            ]
+          })
+        }
+      });
       if (checkedIds.length) {
-        if (checkedIds.indexOf(cart.id) !== -1) cart.checked = true;
-        else cart.checked = false;
-      } else {
-        cart.checked = true;
         this.setState({
-          checkedIds: [
-            ...this.state.checkedIds,
-            cart.id
-          ]
+          checkedIds: checkedIds
         })
       }
-    });
-    if (checkedIds.length) {
-      this.setState({
-        checkedIds: checkedIds
-      })
+      setTimeout(() => {
+        let isAllSelect = this.state.checkedIds.length === cartList.valid.length
+        this.setState({
+          cartList: cartList,
+          isAllSelect: isAllSelect
+        }, () => {
+          this.carnum()
+          this.countMoney()
+        })
+      }, 0);
+    } catch (err) {
+
     }
-    setTimeout(() => {
-      let isAllSelect = this.state.checkedIds.length === cartList.valid.length
-      this.setState({
-        cartList: cartList,
-        isAllSelect: isAllSelect
-      }, () => {
-        this.carnum()
-        this.countMoney()
-      })
-    }, 0);
+
 
   }
   carnum() {
@@ -299,7 +303,7 @@ class ShoppingCart extends React.Component {
       cartCount: carnum
     })
   }
-  placeOrder=()=>{
+  placeOrder = () => {
     let id = [], list = this.state.cartList.valid
     list.forEach(function (val) {
       if (val.checked === true) {
@@ -310,25 +314,25 @@ class ShoppingCart extends React.Component {
       Toast.info('请选择产品', 1.5)
       return
     }
-    Toast.success('正在下单',1.5)
+    Toast.success('正在下单', 1.5)
   }
   // 收藏
   collectAll = () => {
     let data = { id: [], category: "" },
-        list = this.state.cartList.valid;
-        list.forEach(val=>{
-          if(val.checked===true){
-            data.id.push(val.product_id)
-            data.category = val.type
-          }
-        })
-        if (data.id.length === 0) {
-          Toast.info('请选择产品',1.5)
-          return;
-        }
-        postCollectAll(data).then(()=>{
-          Toast.info('收藏成功',1.5)
-        })
+      list = this.state.cartList.valid;
+    list.forEach(val => {
+      if (val.checked === true) {
+        data.id.push(val.product_id)
+        data.category = val.type
+      }
+    })
+    if (data.id.length === 0) {
+      Toast.info('请选择产品', 1.5)
+      return;
+    }
+    postCollectAll(data).then(() => {
+      Toast.info('收藏成功', 1.5)
+    })
   }
   // 删除
   delgoods = () => {
