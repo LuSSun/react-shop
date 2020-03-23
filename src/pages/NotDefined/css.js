@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 const CurrentPage = styled.div`
-    /* background:red; */
 	&.not-defined{
 		img{
 			width: 100%;
