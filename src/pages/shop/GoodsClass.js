@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import toLogin from '../../libs/login'
 import { Link } from 'react-router-dom'
 import { getCategory } from '../../api/store'
 import debounce from "lodash.debounce";
