@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import noCouponIcon from '@/assets/images/noCoupon.png'
 import { getCoupon, getCouponReceive } from "@/api/user";
 import cookie from '../../utils/store/cookie'
-import { ListView, ActivityIndicator,Toast } from 'antd-mobile';
-
+import { ListView, ActivityIndicator, Toast } from 'antd-mobile';
+import { toLogin } from '../../libs/login'
 class GetCoupon extends Component {
   constructor(props) {
     super(props)
@@ -117,7 +117,7 @@ class GetCoupon extends Component {
   }
   getCoupon(id, index) {
     if (!cookie.has('login_status')) {
-      alert('去登录')
+      toLogin({ history: this.props.history, location: this.props.location })
       return
     }
     getCouponReceive(id).then(res => {
@@ -127,7 +127,7 @@ class GetCoupon extends Component {
       this.setState({
         couponsList: list
       })
-      Toast.info('领取成功',1.5)
+      Toast.info('领取成功', 1.5)
     })
   }
 }
