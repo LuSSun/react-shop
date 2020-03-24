@@ -22,8 +22,7 @@ import {
 import {
   getCoupon,
   getCollectAdd,
-  getCollectDel,
-  getUserInfo
+  getCollectDel
 } from "@/api/user";
 import { imageBase64 } from "@/api/public";
 

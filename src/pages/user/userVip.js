@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import 'swiper/css/swiper.css'
 import Swiper from 'react-id-swiper';
-import { getVipInfo, getVipTask, setDetection } from "@/api/user";
+import { getVipInfo, getVipTask } from "@/api/user";
 import { Toast } from 'antd-mobile'
 
 class SwiperTop extends Component {

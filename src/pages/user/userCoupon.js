@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import noCouponIcon from '@/assets/images/noCoupon.png'
 import { getCouponsUser } from "@/api/user";
-import { Toast } from 'antd-mobile';
 
 class UserCoupon extends Component {
   constructor(props) {
