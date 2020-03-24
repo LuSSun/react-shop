@@ -548,6 +548,7 @@ class GoodsDetail extends Component {
     this.goCat(0);
   }
   goCat(news) {
+
     // debugger
     let productSelect = this.state.productValue[this.state.attrValue]
     if (this.state.attrValue) {

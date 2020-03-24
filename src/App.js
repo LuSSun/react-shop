@@ -49,7 +49,6 @@ class App extends Component {
                       } else {
                         document.body.style.backgroundColor = '#f5f5f5'
                       }
-
                       return (
                         <DocumentTitle title={route.meta.title}>
                           <div className={route.isTab ? 'tabPageContent' : 'noTabPageContent'}>

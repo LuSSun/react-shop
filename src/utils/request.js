@@ -16,7 +16,6 @@ function baseRequest(options) {
 
   headers['Authori-zation'] = "Bearer " + token
   options.headers = headers
-
   if (options.login && !token) {
     toMainLogin()
     return Promise.reject({ msg: '未登录', toLogin: true })
@@ -67,7 +66,5 @@ const request = ["post", "put", "patch"].reduce((request, method) => {
     );
   };
 });
-
-
 
 export default request;

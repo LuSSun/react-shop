@@ -1,23 +1,24 @@
 import store from '@/store'
-
-export function toLogin( {history, location}) {
+import history from '../config/history'
+export function toLogin( obj) {
 	// 没有token 跳转到登陆页面
   store.dispatch({
     type: 'LOGOUT'
   })
-  history.push({
+  obj.history.push({
     pathname: '/login',
-    state: { from: location }
+    state: { from: obj.location }
   })
 }
 
 export function toMainLogin() {
+  console.log('未登录')
   // token过期
   // 重定向到登陆页面
-  store.dispatch({
-    type: 'LOGOUT'
+  history.push({
+    pathname: '/login',
+    state: { from: history.location }
   })
-
   return
-
 }
+
