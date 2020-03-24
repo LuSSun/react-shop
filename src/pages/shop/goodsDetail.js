@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import ProductConSwiper from '../../components/ProductSwiper'
 import UserEvaluation from '../../components/UserEvaluation'
@@ -207,75 +207,81 @@ class GoodsDetail extends Component {
       }
     })
   }
-  getImageBase64(){
-    imageBase64(this.state.posterData.image,this.state.posterData.code).then(res=>{
+  getImageBase64() {
+    imageBase64(this.state.posterData.image, this.state.posterData.code).then(res => {
       this.setState({
-        posterData:{
+        posterData: {
           ...this.state.posterData,
-          image:res.data.image,
-          code:res.data.code
+          image: res.data.image,
+          code: res.data.code
         }
-      },()=>{
+      }, () => {
         this.props.token && this.shareCode()
       })
-    }).catch(()=>{
+    }).catch(() => {
       this.props.token && this.shareCode()
     })
   }
 
   render() {
     return (
+
       <PageStyle>
         <div className={this.state.posterImageStatus ? 'noscroll product-con' : 'product-con'}>
           <ProductConSwiper imgUrls={this.state.storeInfo.slider_image}></ProductConSwiper>
-          <div className="wrapper">
-            <div className="share acea-row row-between row-bottom">
-              <div className="money font-color-red">
-                ￥<span className="num">{this.state.storeInfo.price}</span>
+          {
+            (this.state.storeInfo && this.state.storeInfo.store_name) && <Fragment>
+              <div className="wrapper">
+                <div className="share acea-row row-between row-bottom">
+                  <div className="money font-color-red">
+                    ￥<span className="num">{this.state.storeInfo.price}</span>
+                    {
+                      (this.state.storeInfo.vip_price && this.state.storeInfo.vip_price > 0) && <span className="vip-money" >￥{this.state.storeInfo.vip_price}</span>
+                    }
+                    {
+                      (this.state.storeInfo.vip_price && this.state.storeInfo.vip_price > 0) && <img
+                        src={vipImg}
+                        className="image"
+                        alt=""
+                      />
+                    }
+                  </div>
+                  <div className="iconfont icon-fenxiang" onClick={this.listenerActionSheet}></div>
+                </div>
+                <div className="introduce">{this.state.storeInfo.store_name}</div>
+                <div className="label acea-row row-between-wrapper">
+                  <div>原价:￥{this.state.storeInfo.ot_price}</div>
+                  <div>库存:{this.state.storeInfo.stock}{this.state.storeInfo.unit_name}</div>
+                  <div>销量:{this.state.storeInfo.fsales}{this.state.storeInfo.unit_name}</div>
+                </div>
                 {
-                  (this.state.storeInfo.vip_price && this.state.storeInfo.vip_price > 0) && <span className="vip-money" >￥{this.state.storeInfo.vip_price}</span>
-                }
+                  this.state.couponList.length > 0 && <div
+                    className="coupon acea-row row-between-wrapper"
+                    onClick={this.couponTap}
+                  >
+                    <div className="hide line1 acea-row">
+                      优惠券：
                 {
-                  (this.state.storeInfo.vip_price && this.state.storeInfo.vip_price > 0) && <img
-                    src={vipImg}
-                    className="image"
-                    alt=""
-                  />
+                        this.state.couponList.map((item, index) => (
+                          <div className="activity" key={index} >
+                            满{item.use_min_price}减{item.coupon_price}
+                          </div>
+                        ))
+                      }
+                    </div>
+                    <div className="iconfont icon-jiantou"></div>
+                  </div>
                 }
               </div>
-              <div className="iconfont icon-fenxiang" onClick={this.listenerActionSheet}></div>
-            </div>
-            <div className="introduce">{this.state.storeInfo.store_name}</div>
-            <div className="label acea-row row-between-wrapper">
-              <div>原价:￥{this.state.storeInfo.ot_price}</div>
-              <div>库存:{this.state.storeInfo.stock}{this.state.storeInfo.unit_name}</div>
-              <div>销量:{this.state.storeInfo.fsales}{this.state.storeInfo.unit_name}</div>
-            </div>
-            {
-              this.state.couponList.length > 0 && <div
-                className="coupon acea-row row-between-wrapper"
-                onClick={this.couponTap}
-              >
-                <div className="hide line1 acea-row">
-                  优惠券：
-                {
-                    this.state.couponList.map((item, index) => (
-                      <div className="activity" key={index} >
-                        满{item.use_min_price}减{item.coupon_price}
-                      </div>
-                    ))
-                  }
+              <div className="attribute acea-row row-between-wrapper" onClick={this.selecAttrTap}>
+                <div>
+                  {this.state.attrTxt}：<span className="atterTxt">{this.state.attrValue}</span>
                 </div>
                 <div className="iconfont icon-jiantou"></div>
               </div>
-            }
-          </div>
-          <div className="attribute acea-row row-between-wrapper" onClick={this.selecAttrTap}>
-            <div>
-              {this.state.attrTxt}：<span className="atterTxt">{this.state.attrValue}</span>
-            </div>
-            <div className="iconfont icon-jiantou"></div>
-          </div>
+            </Fragment>
+          }
+
           {
             (this.state.system_store && this.state.system_store.id) ? <div className="store-info">
               <div className="title">门店信息</div>
@@ -355,9 +361,9 @@ class GoodsDetail extends Component {
           <ProductWindow attr={this.state.attr} selectProduct={this.selectProduct}></ProductWindow>
           <ShareRedPackets priceName={this.state.priceName} sharePackets={this.sharePackets}></ShareRedPackets>
           <StorePoster
-          posterImageStatus={this.state.posterImageStatus}
-          posterData={this.state.posterData}
-          setPosterImageStatus={this.setPosterImageStatus}
+            posterImageStatus={this.state.posterImageStatus}
+            posterData={this.state.posterData}
+            setPosterImageStatus={this.setPosterImageStatus}
           ></StorePoster>
           <div className={`generate-posters acea-row row-middle ${this.state.posters ? 'on' : ''}`}
           >
@@ -729,10 +735,10 @@ class GoodsDetail extends Component {
     this.shareCode(value)
   }
   // 生成海报
-  setPosterImageStatus=()=>{
+  setPosterImageStatus = () => {
     this.setState({
-      posterImageStatus:!this.state.posterImageStatus,
-      posters:false
+      posterImageStatus: !this.state.posterImageStatus,
+      posters: false
     })
   }
 }
