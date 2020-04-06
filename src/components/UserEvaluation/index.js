@@ -22,7 +22,7 @@ class UserEvaluation extends Component {
               <div className="evaluate-infor">{item.comment}</div>
               <div className="imgList acea-row">
                 {
-                  item.pics.length > 0 && item.pics.map((childItem, childIdex) => (
+                  (item.pics !== null && item.pics.length > 0) && item.pics.map((childItem, childIdex) => (
                     <div className="pictrue" key={childIdex}>
                       <img src={childItem} className="image" alt="" />
                     </div>

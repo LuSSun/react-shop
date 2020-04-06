@@ -39,16 +39,7 @@ class Tab extends Component {
 				showTab = true
 			}
 		})
-		// <Link
-		//                         to={item.url}
-		//                         className={`item ${item.url === location.pathname ? 'on' : ''}`}
-		//                         key={index}
-		//                     >
-		//                         <div
-		//                             className={`iconfont ${item.icon1} ${item.url === location.pathname ? item.icon2 : ''}`}
-		//                         ></div>
-		//                         <div>{item.name}</div>
-		//                     </Link>
+
 		return (
 			showTab ? <div id="footer" className="acea-row row-middle">
 				{

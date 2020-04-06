@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import 'swiper/css/swiper.css'
 import Swiper from 'react-id-swiper';
 import PageStyle from './styles/goodsDetailStyle'
+
 import {
   getProductDetail,
   postCartAdd,
@@ -27,7 +28,6 @@ import {
 import { imageBase64 } from "@/api/public";
 
 import { Toast } from 'antd-mobile'
-
 // 优品推荐
 const GoodList = ({ goodList }) => {
   const swpierOptions = {
@@ -117,7 +117,6 @@ class GoodsDetail extends Component {
       goodList: [],
       system_store: {},
       qqmapsdk: null
-
     }
   }
 
@@ -128,19 +127,40 @@ class GoodsDetail extends Component {
       this.getDetail()
       this.coupons()
     })
-
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.id !== this.props.match.params.id) {
-      this.setState({
+  // 新版本 要getDerivedStateFromProps和componentDidUpdate以前使用  替代 componentWillReceiveProps
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.match.params.id !== prevState.id) {
+      return {
         id: nextProps.match.params.id
+      }
+    }
+    return null
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.id !== prevState.id) {
+      this.setState({
+        id: this.state.id
       }, () => {
-        window.scroll(0, 0)
         this.getDetail()
         this.coupons()
+        window.scroll(0, 0)
       })
     }
   }
+
+  // react计划17.0 componentWillReceiveProps
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.match.params.id !== this.props.match.params.id) {
+  //     this.setState({
+  //       id: nextProps.match.params.id
+  //     }, () => {
+  //       window.scroll(0, 0)
+  //       this.getDetail()
+  //       this.coupons()
+  //     })
+  //   }
+  // }
 
   async getDetail() {
 
@@ -524,6 +544,7 @@ class GoodsDetail extends Component {
   }
   // 收藏
   setCollect = () => {
+
     let id = this.state.storeInfo.id,
       category = "product";
     if (this.state.storeInfo.userCollect) {

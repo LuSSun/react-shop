@@ -38,7 +38,7 @@ const BannerSwiper = ({ banner }) => {
         {
           banner.map((item, index) => (
             <div key={index} >
-              <Link className="search acea-row row-middle" to={item.wap_url ? item.wap_url : ''}>
+              <Link style={{height:'100%'}} className="search acea-row row-middle" to={item.wap_url ? item.wap_url : ''}>
                 <img src={item.pic} alt="" />
               </Link>
             </div>
@@ -174,6 +174,7 @@ class Home extends Component {
   }
 
   render() {
+
     return (
       <div className="index" style={{ background: '#fff', paddingBottom: '0.2rem' }}>
         {
@@ -348,6 +349,7 @@ class Home extends Component {
     )
   }
   componentDidMount() {
+    console.log(this.props)
     this.getHomeData()
   }
 
