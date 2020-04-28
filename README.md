@@ -1,6 +1,6 @@
 ## 简介
 此项目是基于 react全家桶 + Ant Design Mobile 技术栈仿CRMEB的h5商城网站。
-模仿CRMEB vue版H5前端页面[手机模式浏览](http://demo26.crmeb.net)。
+模仿CRMEB vue版H5前端页面。
 ## 效果
 
 ## 已经完成的功能
