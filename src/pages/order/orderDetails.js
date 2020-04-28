@@ -25,6 +25,7 @@ class OrderDetails extends Component {
   componentDidMount() {
     console.log(this.props)
   }
+
 }
 
 export default OrderDetails
